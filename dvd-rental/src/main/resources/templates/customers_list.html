@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>DVE Rental Application</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="top-title-container">
+    <h1>Customers</h1>
+</div>
+<div class="top-button-container">
+    <a th:href="@{/newCustomer}" class="btn btn-info col-2">Add new customer</a>
+</div>
+<div class="my_container">
+    <table border="1" class="table">
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Options</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="customers : ${customersList}">
+            <td th:text="${customers.id}"></td>
+            <td th:text="${customers.name}"></td>
+            <td th:text="${customers.lastName}"></td>
+            <td th:text="${customers.phoneNumber}"></td>
+            <td>
+                <a th:href="@{/newCard/{id}(id=${customers.id})}">Add new rent card,</a>
+                <a th:href="@{/cardById/{id}(id=${customers.id})}">Show rent cards,</a>
+                <a th:href="@{/customerUpdate/{id}(id=${customers.id})}">Update Customer,</a>
+                <a th:href="@{/deleteCustomer/{id}(id=${customers.id})}">Remove Customer</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

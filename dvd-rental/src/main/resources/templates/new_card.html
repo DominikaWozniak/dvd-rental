@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>DVE Rental Application</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h1>Rent Card Management System</h1>
+    <hr>
+    <h2>New card</h2>
+
+    <form action="#" th:action="@{/saveCard}" th:object="${newCard}" method="post">
+        <input type="hidden" th:field="*{customer.id}" placeholder="Customer id" class="form-control mb-4 col-4">
+        <button type="submit" class="btn btn-info col-2">Save Card</button>
+    </form>
+
+    <hr>
+    <a th:href="@{/}">Back to menu</a>
+</div>
+</body>
+</html>

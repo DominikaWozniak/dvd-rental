@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>DVE Rental Application</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="top-title-container">
+    <h1>Customer card</h1>
+</div>
+<div class="top-button-container" >
+    <a th:href="@{/addMovieToCard/{id}(id=${cardById.id})}" class="btn btn-info col-2">Add movie to card</a>
+</div>
+<div class="my_container">
+    <table border="1" class="table">
+        <thead>
+        <tr>
+            <th>Id rent card</th>
+            <th>Customer id</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:object="${cardById}">
+            <td th:text="${cardById.id}"></td>
+            <td th:text="${cardById.customer.id}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="my_container">
+
+    <table border="1" class="table">
+        <thead>
+        <tr>
+            <th>Id Movie</th>
+            <th>Movie Title</th>
+            <th>End rent</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="movies : ${moviesByCard}">
+            <td th:text="${movies.id}"></td>
+            <td th:text="${movies.title}"></td>
+            <td>
+                <a th:href="@{/deleteMovie/{id}(id=${movies.id})}">End rent</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
